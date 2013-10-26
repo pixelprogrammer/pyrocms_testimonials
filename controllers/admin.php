@@ -23,25 +23,23 @@ class Admin extends Admin_Controller {
 		$this->load->model('testimonial_m');
 		
 		if($this->input->post('btn_action') !== false) {
-			if($this->input->post('btn_action') !== false) { 
-				if($this->input->post('btn_action') == 'save_exit' || 
-					$this->input->post('btn_action') == 'save') {
-					// update the testimonial
-					$input = array(
-						'name'	=> $this->input->post('name'),
-						'bio' 	=> $this->input->post('testimonial_bio'),
-						'website_url'	=> $this->input->post('website_url'),
-						'text'	=> $this->input->post('testimonial_text'),
-						'status'=> $this->input->post('status')
-						);
+			if($this->input->post('btn_action') == 'save_exit' || 
+				$this->input->post('btn_action') == 'save') {
+				// update the testimonial
+				$input = array(
+					'name'	=> $this->input->post('name'),
+					'bio' 	=> $this->input->post('testimonial_bio'),
+					'website_url'	=> $this->input->post('website_url'),
+					'text'	=> $this->input->post('testimonial_text'),
+					'status'=> $this->input->post('status')
+					);
 
-					if($id = $this->testimonial_m->insert($input)) {
-						$this->session->set_flashdata('success', 'Testimonial was created successfully');
-						if($this->input->post('btn_action') == 'save_exit') {
-							redirect('admin/testimonials');
-						} else {
-							redirect('admin/testimonials/edit/' . $id);
-						}
+				if($id = $this->testimonial_m->insert($input)) {
+					$this->session->set_flashdata('success', 'Testimonial was created successfully');
+					if($this->input->post('btn_action') == 'save_exit') {
+						redirect('admin/testimonials');
+					} else {
+						redirect('admin/testimonials/edit/' . $id);
 					}
 				}
 			}
@@ -99,6 +97,19 @@ class Admin extends Admin_Controller {
 		$this->template->append_metadata($this->load->view('fragments/wysiwyg', array(), true));
 		$this->template->build('admin/edit');
 
+	}
+
+	public function delete($id=null) {
+		if($id === null) {
+			redirect('admin/testimonials');
+		}
+
+		$this->load->model('testimonial_m');
+
+		$this->testimonial_m->delete($id);
+
+		$this->session->set_flashdata('success', 'Testimonial was deleted');
+		redirect('admin/testimonials');
 	}
 
 }

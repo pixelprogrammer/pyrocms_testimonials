@@ -8,12 +8,10 @@ class Testimonial_m extends MY_Model {
 		
 	}
 
-	public function get_all($parse=false) {
+	public function get_all() {
 		$query = $this->db->get('testimonials');
 		if($query->num_rows() > 0) {
-			if($parse) {
-				return $this->_parse_testimonials($query->result());
-			}
+			
 			return $query->result();
 		}
 		
@@ -85,24 +83,8 @@ class Testimonial_m extends MY_Model {
 	{
 		// delete the testimonial
 		$this->db->where('id', $id);
-		$this->db->delete();
+		return $this->db->delete('testimonials');
 	}
-
-	// private function _parse_testimonials($testimonials) {
-	// 	$parsed_testimonials = array();
-
-	// 	foreach ($testimonials as $testimonial) {
-	// 		array_push($parsed_testimonials, array(
-	// 			'name' => $testimonial->name,
-	// 			'bio' => $testimonial->bio,
-	// 			'website_url' => $testimonial->website_url,
-	// 			'text' => $testimonial->text,
-	// 			'id' => $testimonial->id
-	// 			));
-	// 	}
-
-	// 	return $parsed_testimonials;
-	// }
 
 }
 

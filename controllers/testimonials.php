@@ -7,7 +7,7 @@ class Testimonials extends Public_Controller {
 		// display testimonials based on the setting from the control panel
 		$this->load->model('testimonial_m');
 
-        var_dump($this->testimonial_m->get_random()); die();
+        // var_dump($this->testimonial_m->get_random()); die();
 		$this->template->set('testimonials', $this->testimonial_m->get_testimonials());
 		$this->template->title($this->module_details['name']);
 		$this->template->build('index');

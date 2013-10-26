@@ -1,10 +1,19 @@
 <div class="content-body">
-	The testimonials page. I will have to create a view for this later.
 	{{ testimonials }}
-		<h3>
-			<a href="{{ website_url }}">{{ name }}</a>
-		</h3>
-		<em>{{ bio }}</em>
-		<p>"{{ text }}"</p>
+        {{ if { helper:count start="0" } > 0 }}
+            <div class="divider"></div>
+        {{ endif }}
+        <h3>
+            {{ name }}
+        </h3>
+        {{ if { settings:testimonial_show_bio } == 1 }}
+            <em>{{ bio }}</em>
+        {{ endif }}
+        <p>"{{ text }}"</p>
+        {{ if { settings:testimonial_show_website } == 1 AND website_url != '' }}
+            <p>
+                <a class="link" href="{{ website_url }}">website</a>
+            </p>
+        {{ endif }}
 	{{ /testimonials }}
 </div>

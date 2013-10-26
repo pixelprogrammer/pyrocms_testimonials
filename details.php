@@ -88,7 +88,7 @@ class Module_Testimonials extends Module {
 				'module' => 'testimonials'
 			),
 			array(
-				'slug' => 'show_bio',
+				'slug' => 'testimonial_show_bio',
 				'title' => 'Show Bio',
 				'description' => 'Do you want to display the bio of the client that gives testimonials?',
 				'`default`' => true,
@@ -100,8 +100,8 @@ class Module_Testimonials extends Module {
 				'module' => 'testimonials'
 			),
 			array(
-				'slug' => 'allow_links',
-				'title' => 'Allow Links',
+				'slug' => 'testimonial_show_website',
+				'title' => 'Allow Client Website URL\'s',
 				'description' => 'Allow links directed to another site from this one? By allowing people to post links on your website you will increase the chances of getting that testimonial from them. If you ever decide that you don\'t want to direct people away from your site then you can always turn them off with this feature',
 				'`default`' => true,
 				'`value`' => '',
