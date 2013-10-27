@@ -39,8 +39,12 @@
 		</div>
 	</section>
 	<?php else : ?>
-		<div class="no_data">
-			You haven't added any testimonials yet. You can add one <a href="admin/testimonials/create">here</a>.
-		</div>
+		<section class="item">
+			<div class="content">
+				<div class="no_data">
+					You haven't added any testimonials yet. You can add one <a href="admin/testimonials/create">here</a>.
+				</div>
+			</div>
+		</section>
 	<?php endif; ?>
 </div>
